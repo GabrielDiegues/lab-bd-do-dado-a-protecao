@@ -1,0 +1,21 @@
+Missão 2 · Captura de mudanças (Trilha A: tabela `mudancas` + gatilhos)
+=======================================================================
+
+[ok] o log registra eventos: 5
+[ok] na ordem em que foram aplicados (tabela, operação): [('pedidos', 'alteração'), ('clientes', 'alteração'), ('clientes', 'inserção'), ('pedidos', 'inserção'), ('clientes', 'exclusão')]
+   #1 alteração  pedidos   chave 105
+   #2 alteração  clientes  chave 3
+   #3 inserção   clientes  chave 7
+   #4 inserção   pedidos   chave 109
+   #5 exclusão   clientes  chave 5
+[ok] eventos aplicados na primeira sincronização: 5
+[ok] bronze: clientes (sem a cliente 5) e pedidos: (6, 9, 0)
+[ok] e-mail novo no cliente 3: carla.n@example.com
+[ok] o pedido 106 continua lá: 1
+[ok] receita paga: R$ 750,90
+[ok] sincronizar de novo não aplica nada: 0
+[ok] reaplicar o log desde o primeiro evento: eventos reaplicados: 5
+[ok] reaplicar desde o primeiro evento: mesmos números: {'clientes': 6, 'pedidos': 9, 'email3': 'carla.n@example.com', 'cliente5': 0, 'pedido106': 1, 'receita': 75090}
+
+Trilha A (sem infraestrutura): gatilhos AFTER INSERT/UPDATE/DELETE gravam em `mudancas` na mesma transação
+da mudança; a exclusão leva só a chave. Motivo no README.
