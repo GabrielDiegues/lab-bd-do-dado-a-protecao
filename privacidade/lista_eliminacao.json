@@ -1,0 +1,16 @@
+[
+  {
+    "chave": 5,
+    "data": "2026-10-15T20:25:17",
+    "moradas": [
+      "origem: clientes, navegacao, pedidos.observacao",
+      "log de mudanças (origem.mudancas): carga útil zerada, exclusão registrada por chave",
+      "log de navegação (tópico navegacao): lápide por chave + compactação",
+      "estado dos leitores do log (visitas, por_cliente)",
+      "camada bronze: cadastro, navegação, observação do pedido (chave do titular apagada)",
+      "camada silver e gold: reconstruídas sem o titular; pedido mantido sem vínculo (cliente_ps vazio)",
+      "cópia de segurança: expira no prazo; nunca restaurada sem reaplicar esta lista",
+      "saídas e evidências do pipeline: geradas sem dado pessoal"
+    ]
+  }
+]

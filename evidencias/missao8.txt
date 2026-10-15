@@ -1,0 +1,35 @@
+Missão 8 · Esquecer de verdade (cliente 5)
+==========================================
+
+[ok] ANTES: onde a titular ainda aparece nas camadas vivas (o cadastro já saiu pelo log na Missão 2): ['IP', 'telefone']
+   moradas vivas: bronze.navegacao, bronze.pedidos, log.topico_navegacao, origem.navegacao, origem.pedidos
+[ok] EXTRA · crypto-shredding: cadastros cifrados com chave própria na carga do dia 1: 6
+[ok] a cópia do dia 1 guarda o cadastro dela CIFRADO (nenhum dado em claro): True
+[ok] ANTES de esquecer: com a chave dela, a cópia abre: elisa.moura@example.com
+[ok] com a chave, o cadastro vivo abre: carla.n@example.com
+[ok] DEPOIS: ocorrências na origem, no log, nos leitores, na bronze, na silver e na gold (busca por valor): []
+[ok] DEPOIS: resquícios nos bytes dos arquivos de banco (páginas livres incluídas): {}
+[ok] EXTRA · a cópia de segurança do dia 1 virou ruído para ela (a chave foi apagada): (None, None)
+[ok] eventos de navegação (origem, bronze, silver): (6, 6, 6)
+[ok] pedidos na silver: 11
+[ok] receita paga na silver: R$ 844,90
+[ok] a visão de consumo não muda: {'linhas': [{'cidade': 'Campinas', 'clientes': 1, 'receita_centavos': None, 'suprimida': 1}, {'cidade': 'Santos', 'clientes': 3, 'receita_centavos': 54500, 'suprimida': 0}, {'cidade': 'Sorocaba', 'clientes': 2, 'receita_centavos': 9590, 'suprimida': 0}], 'total': 84490}
+[ok] pedido 106 fica: existe, observação limpa, cliente_ps vazio: (1, None, None)
+[ok] visitas por página: /carrinho perde o evento dela: 1
+[ok] estado do leitor por_cliente sem a titular: False
+[ok] tópico navegacao: lápides e cargas ainda legíveis da titular: (1, 0)
+[ok] lista de eliminação: registros: 1
+[ok] lista sem nome, CPF, e-mail ou telefone: []
+[ok] rodar `esquecer 5` de novo não falha nem muda nada (visão de consumo, lista e contagens iguais): True
+
+Moradas tratadas (ver privacidade/moradas.md):
+   - origem: clientes, navegacao, pedidos.observacao
+   - log de mudanças (origem.mudancas): carga útil zerada, exclusão registrada por chave
+   - log de navegação (tópico navegacao): lápide por chave + compactação
+   - estado dos leitores do log (visitas, por_cliente)
+   - camada bronze: cadastro, navegação, observação do pedido (chave do titular apagada)
+   - camada silver e gold: reconstruídas sem o titular; pedido mantido sem vínculo (cliente_ps vazio)
+   - cópia de segurança: expira no prazo; nunca restaurada sem reaplicar esta lista
+   - saídas e evidências do pipeline: geradas sem dado pessoal
+[ok] termos da titular (nome, CPF, telefone, IP, e-mail) em evidências, documentos e código: nenhuma ocorrência
+(os dados de partida em dados/dia1 são o laboratório fictício e ficam de fora da busca)
