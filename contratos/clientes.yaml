@@ -1,0 +1,46 @@
+conjunto: clientes
+versao: 1
+descricao: Cadastro de quem compra na loja.
+dono: time de Atendimento e Cadastro
+classe: pessoal
+frescor: até 24 horas depois da mudança na origem
+campos:
+  - nome: id
+    tipo: inteiro
+    obrigatorio: true
+    unico: true
+    classe: pessoal
+    descricao: Identificador do cliente; leva à pessoa.
+    finalidade: chave de junção (na camada silver vira o pseudônimo cliente_ps)
+  - nome: nome
+    tipo: texto
+    obrigatorio: true
+    classe: pessoal
+    descricao: Nome completo.
+  - nome: email
+    tipo: texto
+    obrigatorio: true
+    classe: pessoal
+    descricao: E-mail de contato.
+  - nome: cpf
+    tipo: texto
+    obrigatorio: true
+    classe: pessoal
+    descricao: CPF, necessário para a nota fiscal. Real só na origem e na camada bronze.
+  - nome: nascimento
+    tipo: data
+    obrigatorio: true
+    classe: pessoal
+    descricao: Data de nascimento.
+    finalidade: segmentar por faixa etária (na silver só a faixa etária)
+  - nome: cidade
+    tipo: texto
+    obrigatorio: true
+    classe: pessoal   # quase-identificador: em cidade com um cliente só, a cidade é a pessoa
+    descricao: Cidade do cadastro.
+    finalidade: receita por cidade
+  - nome: atualizado_em
+    tipo: data_hora
+    obrigatorio: true
+    classe: interno
+    descricao: Última alteração na origem; é a marca-d'água da carga incremental.

@@ -1,0 +1,19 @@
+Missão 4 · Contrato, validação e quarentena
+===========================================
+
+[ok] linhas do lote do dia 3 na bronze: 7
+[ok] do lote: aceitas (pedidos 110 e 115): [110, 115]
+[ok] do lote: em quarentena: 5
+   pedido 111 (arquivo pedidos_dia3.csv, linha 2, execução 5): valor_centavos negativo
+   pedido 112 (arquivo pedidos_dia3.csv, linha 3, execução 5): cliente_id ausente
+   pedido 113 (arquivo pedidos_dia3.csv, linha 4, execução 5): status fora do domínio
+   pedido 110 (arquivo pedidos_dia3.csv, linha 5, execução 5): id repetido (chave repetida)
+   pedido 114 (arquivo pedidos_dia3.csv, linha 6, execução 5): criado_em no futuro
+[ok] 5 motivos diferentes: 5
+[ok] motivos: ['cliente_id ausente', 'criado_em no futuro', 'id repetido (chave repetida)', 'status fora do domínio', 'valor_centavos negativo']
+[ok] contratos de clientes e navegação: reprovadas: (0, 0)
+[ok] silver: pedidos: 11
+[ok] silver: receita paga: R$ 844,90
+[ok] sem a validação, o mesmo cálculo daria: R$ 932,90
+[ok] quarentena persistida na bronze: 5
+Regras lidas de contratos/*.yaml (obrigatorio, minimo, dominio, maximo, unico), não fixas no código.

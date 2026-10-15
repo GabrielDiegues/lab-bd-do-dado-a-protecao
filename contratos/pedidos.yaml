@@ -1,0 +1,48 @@
+conjunto: pedidos
+versao: 1
+descricao: Pedidos feitos na loja online, um por linha.
+dono: time de Vendas
+classe: pessoal
+frescor: até 24 horas depois da mudança na origem
+campos:
+  - nome: id
+    tipo: inteiro
+    obrigatorio: true
+    unico: true
+    classe: interno
+    descricao: Identificador do pedido.
+  - nome: cliente_id
+    tipo: inteiro
+    obrigatorio: true
+    classe: pessoal
+    descricao: Cliente que fez o pedido; é um número que leva à pessoa.
+    finalidade: ligar o pedido ao cliente (na camada silver vira o pseudônimo cliente_ps)
+  - nome: valor_centavos
+    tipo: inteiro
+    obrigatorio: true
+    minimo: 0
+    classe: confidencial
+    descricao: Valor do pedido, em centavos.
+  - nome: status
+    tipo: texto
+    obrigatorio: true
+    dominio: [pendente, pago, cancelado]
+    classe: interno
+    descricao: Situação do pedido.
+  - nome: criado_em
+    tipo: data_hora
+    obrigatorio: true
+    maximo: momento da carga
+    classe: interno
+    descricao: Quando o pedido foi criado.
+  - nome: observacao
+    tipo: texto
+    obrigatorio: false
+    classe: pessoal   # texto livre: o atendimento escreve telefone e e-mail (achado pelo varredor)
+    descricao: Recado do atendimento. Texto livre, não sai da camada bronze.
+    finalidade: operar a entrega (não é necessária para a análise)
+  - nome: atualizado_em
+    tipo: data_hora
+    obrigatorio: false
+    classe: interno
+    descricao: Última alteração na origem; é a marca-d'água da carga incremental.

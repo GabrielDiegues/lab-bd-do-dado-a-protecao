@@ -1,0 +1,36 @@
+conjunto: navegacao
+versao: 1
+descricao: Cliques e visitas às páginas da loja, um evento por linha.
+dono: time de Produto e Experiência Digital
+classe: pessoal
+frescor: "até 24 horas depois do evento (leitor rápido: segundos)"
+campos:
+  - nome: evento_id
+    tipo: inteiro
+    obrigatorio: true
+    unico: true
+    classe: interno
+    descricao: Identificador do evento; impede a duplicata ao reler.
+  - nome: cliente_id
+    tipo: inteiro
+    obrigatorio: false   # visitante sem cadastro
+    classe: pessoal
+    descricao: Cliente logado; vazio para visitante.
+    finalidade: contar eventos por cliente (na camada silver vira o pseudônimo cliente_ps)
+  - nome: ip
+    tipo: texto
+    obrigatorio: true
+    classe: pessoal   # identifica um aparelho e, por ele, uma pessoa (achado pelo varredor)
+    descricao: Endereço IP de quem navegou. Não sai da camada bronze.
+    finalidade: registro de acesso exigido por lei (Marco Civil, art. 15); fora da análise
+  - nome: pagina
+    tipo: texto
+    obrigatorio: true
+    classe: interno
+    descricao: Página visitada.
+  - nome: quando
+    tipo: data_hora
+    obrigatorio: true
+    maximo: momento da carga
+    classe: interno
+    descricao: Momento do evento.
