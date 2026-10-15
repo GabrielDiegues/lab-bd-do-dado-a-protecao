@@ -1,0 +1,17 @@
+Missão 5 · Governança: acordo, catálogo, regra como código e varredor
+=====================================================================
+
+[ok] sem a retenção de `navegacao`, o pipeline para (código de saída): 2
+[ok] mensagem clara: True
+   PIPELINE PARADO pela regra de governança:
+   navegacao: conjunto de classe 'pessoal' sem retenção definida (prazo e motivo)
+[ok] devolvido o prazo, o pipeline passa: 0
+
+Varredor sobre o rascunho (observacao e ip declarados como `interno`):
+   NÃO DECLARADO navegacao.ip: ['IP'] em 8 linhas (chaves [1, 2, 3, 4, 5, 6, 7, 8])
+   NÃO DECLARADO pedidos.observacao: ['e-mail', 'telefone'] em 2 linhas (chaves [104, 106])
+[ok] dado pessoal onde ninguém declarou: [('navegacao', 'ip'), ('pedidos', 'observacao')]
+[ok] pedidos com dado pessoal em observacao (104 e 106): [104, 106]
+[ok] coluna ip: eventos: 8
+[ok] com a classificação final dos contratos: nada fica de fora do mapa: []
+[ok] mudar a descrição no contrato muda o catálogo sem editá-lo: True

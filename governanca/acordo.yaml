@@ -1,0 +1,33 @@
+# Acordo de governança da loja. Dono é sempre um time, nunca uma pessoa.
+# Classe: público | interno | confidencial | pessoal | pessoal sensível
+conjuntos:
+  - nome: clientes
+    dono: time de Atendimento e Cadastro
+    classe: pessoal   # a do campo mais sensível: nome, e-mail, CPF, nascimento
+    retencao:
+      prazo: enquanto durar a relação com a cliente
+      motivo: uso (atender e entregar). Ao pedido de eliminação (LGPD art. 18, VI) o cadastro é apagado; só fica o que a obrigação legal exige (art. 16, I), e isso mora nos pedidos.
+    acesso:
+      pede: qualquer time da loja, com a finalidade escrita
+      aprova: dono do conjunto (time de Atendimento e Cadastro)
+      audita: toda leitura de CPF, e-mail ou nome por papel diferente do pipeline; revisão trimestral
+  - nome: pedidos
+    dono: time de Vendas
+    classe: pessoal   # cliente_id e observacao (texto livre) são pessoais
+    retencao:
+      prazo: 5 anos
+      motivo: obrigação fiscal e prazo de prescrição tributária (LGPD art. 16, I); depois disso, eliminação ou anonimização
+    acesso:
+      pede: finanças, analistas e atendimento
+      aprova: dono do conjunto (time de Vendas)
+      audita: leitura da coluna observacao e qualquer exportação fora da plataforma
+  - nome: navegacao
+    dono: time de Produto e Experiência Digital
+    classe: pessoal   # IP e cliente_id; o IP escondido foi achado pelo varredor
+    retencao:
+      prazo: 6 meses
+      motivo: volume alto e uso curto (análise de funil); o IP, como registro de acesso, também tem prazo de 6 meses no Marco Civil (art. 15)
+    acesso:
+      pede: analistas de produto e marketing
+      aprova: dono do conjunto (time de Produto e Experiência Digital)
+      audita: leitura da coluna ip e o cruzamento dela com cliente_id
