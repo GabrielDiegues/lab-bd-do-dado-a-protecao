@@ -1,0 +1,13 @@
+Missão 1 · Carga incremental (marca-d'água, mesclagem e idempotência)
+=====================================================================
+
+[ok] 1ª execução: clientes, pedidos e eventos na bronze: (6, 8, 8)
+[ok] 2ª execução, sem mudança na origem: linhas lidas: 0
+[ok] 2ª execução: totais continuam: (6, 8, 8)
+[ok] depois das mudanças do dia 2: linhas lidas: 4
+[ok]   … quais tabelas: {'clientes': 2, 'pedidos': 2, 'navegacao': 0}
+[ok] bronze: clientes, pedidos: (7, 9)
+[ok] bronze: receita paga: R$ 750,90
+[ok] cliente 5 excluída na origem e ainda na bronze (ponto de partida da Missão 2): (6, 1)
+[ok] colunas de controle preenchidas (_carregado_em e _execucao): 0
+[ok] rodar de novo: 0 linhas: 0
