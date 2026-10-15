@@ -1,0 +1,6 @@
+Missão 0 · A origem e o repositório
+===================================
+
+[ok] clientes, pedidos e eventos de navegação na origem: (6, 8, 8)
+[ok] receita paga na origem: R$ 655,00
+[ok] pedidos sem chave estrangeira (o pedido sobrevive à exclusão do cliente): 0
