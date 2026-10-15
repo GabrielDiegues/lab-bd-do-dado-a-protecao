@@ -1,0 +1,45 @@
+Missão 9 · Resiliência: cópias, ensaio e RTO medido
+===================================================
+
+[ok] cópia 2 (outra pasta, fora do repositório): erros no teste de integridade: []
+[ok] cópia 3 (isolada, somente leitura): erros no teste de integridade: []
+[ok] a cópia isolada aceita escrita? (imutável no laboratório): False
+[ok] backup e cofre ficam fora do repositório: (False, False)
+[ok] cópia da chave guardada em outro lugar: True
+   offsets guardados com a cópia: {'bronze_mudancas/mudancas': 0, 'bronze/navegacao': 8}
+
+Ensaio com a cópia local:
+     0.00s  desastre: bronze, silver e gold apagadas  
+     0.00s  cópia restaurada e verificada (SHA-256 + integridade)  {'clientes': 6, 'pedidos': 8, 'navegacao': 8, 'receita_paga': 65500} cliente 5 presente: True
+     0.01s  log reaplicado  6 eventos de mudanças, 1 do tópico de navegação
+     0.02s  lista de eliminação reaplicada  1 titular(es)
+     0.03s  bronze cifrada de novo (crypto-shredding)  0 cadastros
+     0.03s  lote do dia 3 carregado  7 linhas
+     0.05s  silver e gold reconstruídas  {'clientes': 6, 'pedidos': 11, 'navegacao': 6, 'receita_paga': 84490, 'em_quarentena': 5}
+[ok] [cópia local] a cópia do dia 1 continha a cliente 5: True
+[ok] [cópia local] depois do ensaio: clientes, pedidos, eventos, receita: {'clientes': 6, 'pedidos': 11, 'navegacao': 6, 'receita': 84490}
+[ok] [cópia local] a visão de consumo é a mesma: {'linhas': [{'cidade': 'Campinas', 'clientes': 1, 'receita_centavos': None, 'suprimida': 1}, {'cidade': 'Santos', 'clientes': 3, 'receita_centavos': 54500, 'suprimida': 0}, {'cidade': 'Sorocaba', 'clientes': 2, 'receita_centavos': 9590, 'suprimida': 0}], 'total': 84490}
+[ok] [cópia local] a cliente 5 não reaparece em nenhuma camada: []
+[ok] [cópia local] nem nos bytes dos bancos: {}
+
+Ensaio com a cópia isolada:
+     0.00s  desastre: bronze, silver e gold apagadas  
+     0.00s  cópia restaurada e verificada (SHA-256 + integridade)  {'clientes': 6, 'pedidos': 8, 'navegacao': 8, 'receita_paga': 65500} cliente 5 presente: True
+     0.01s  log reaplicado  6 eventos de mudanças, 1 do tópico de navegação
+     0.03s  lista de eliminação reaplicada  1 titular(es)
+     0.03s  bronze cifrada de novo (crypto-shredding)  0 cadastros
+     0.03s  lote do dia 3 carregado  7 linhas
+     0.05s  silver e gold reconstruídas  {'clientes': 6, 'pedidos': 11, 'navegacao': 6, 'receita_paga': 84490, 'em_quarentena': 5}
+[ok] [cópia isolada] a cópia do dia 1 continha a cliente 5: True
+[ok] [cópia isolada] depois do ensaio: clientes, pedidos, eventos, receita: {'clientes': 6, 'pedidos': 11, 'navegacao': 6, 'receita': 84490}
+[ok] [cópia isolada] a visão de consumo é a mesma: {'linhas': [{'cidade': 'Campinas', 'clientes': 1, 'receita_centavos': None, 'suprimida': 1}, {'cidade': 'Santos', 'clientes': 3, 'receita_centavos': 54500, 'suprimida': 0}, {'cidade': 'Sorocaba', 'clientes': 2, 'receita_centavos': 9590, 'suprimida': 0}], 'total': 84490}
+[ok] [cópia isolada] a cliente 5 não reaparece em nenhuma camada: []
+[ok] [cópia isolada] nem nos bytes dos bancos: {}
+
+RTO medido no ensaio: 0.05 s (pior dos dois). Prometido no plano (bronze + silver): 2 h.
+A diferença é enorme porque o laboratório tem 25 linhas; o número que importa é o método:
+cronometrar a restauração completa, comparar com a promessa e registrar a diferença.
+[ok] EXTRA · a reconstrução com a chave correta reproduz os pseudônimos da Missão 6: True
+[ok] EXTRA · reconstruir com OUTRA chave: pseudônimos que batem com a evidência da Missão 6: 0
+   Por isso a chave entra no plano: dado restaurado sem a chave certa não liga com nada.
+[ok] EXTRA · de volta à chave correta: True
