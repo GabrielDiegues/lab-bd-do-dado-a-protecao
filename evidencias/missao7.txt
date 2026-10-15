@@ -1,0 +1,13 @@
+Missão 7 · Privacidade: minimização, K-anonimato e visão de consumo
+===================================================================
+
+[ok] finalidade registrada para cada campo pessoal que restou na silver (nascimento, cidade, id→cliente_ps): True
+[ok] campos sem finalidade saem da silver (nome, e-mail, CPF): ['nome', 'email', 'cpf']
+[ok] com a data de nascimento completa: combinações com uma pessoa só: (6, 6)
+[ok] faixa etária + cidade: combinações com uma pessoa só: 4
+   grupos (cidade, faixa): {'Campinas/35–44': 1, 'Santos/25–34': 2, 'Santos/35–44': 1, 'Sorocaba/25–34': 1, 'Sorocaba/45–54': 1}
+[ok] K=2 · Santos: ('R$ 545,00', 3)
+[ok] K=2 · Sorocaba: ('R$ 95,90', 2)
+[ok] K=2 · Campinas suprimida: (1, None, 1)
+[ok] total geral (inclui a cidade suprimida e o pedido 106, sem cadastro): R$ 844,90
+[ok] K=3 · Sorocaba também é suprimida: (1, 0)
