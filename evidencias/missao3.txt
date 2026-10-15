@@ -1,0 +1,45 @@
+Missão 3 · Um log, vários leitores (tópico `navegacao`)
+=======================================================
+
+Cenário 1 · sem queda (1 evento por segundo; a bronze acorda a cada 5 s)
+   t=1s  publicado até o offset 1  | leitor rápido atrás: 0  | bronze atrás: 1
+   t=2s  publicado até o offset 2  | leitor rápido atrás: 0  | bronze atrás: 2
+   t=3s  publicado até o offset 3  | leitor rápido atrás: 0  | bronze atrás: 3
+   t=4s  publicado até o offset 4  | leitor rápido atrás: 0  | bronze atrás: 4
+   t=5s  publicado até o offset 5  | leitor rápido atrás: 0  | bronze atrás: 5
+   t=6s  publicado até o offset 6  | leitor rápido atrás: 0  | bronze atrás: 1
+   t=7s  publicado até o offset 7  | leitor rápido atrás: 0  | bronze atrás: 2
+   t=8s  publicado até o offset 8  | leitor rápido atrás: 0  | bronze atrás: 3
+[ok] leitor rápido sempre no último evento: 0
+[ok] bronze fica até 5 eventos atrás: True
+[ok] visitas por página ao fim: {'/carrinho': 2, '/home': 1, '/produto/camiseta': 1, '/produto/fone': 1, '/produto/mochila': 1, '/produto/relogio': 1, '/produto/tenis': 1}
+[ok] bronze: eventos (sem duplicata): (8, 8)
+
+Cenário 2 · `visitas` cai depois do 4º evento (offset salvo) e volta quando o produtor termina
+   t=1s  publicado até o offset 1  | visitas atrás: 0  | bronze atrás: 1
+   t=2s  publicado até o offset 2  | visitas atrás: 0  | bronze atrás: 2
+   t=3s  publicado até o offset 3  | visitas atrás: 0  | bronze atrás: 3
+   t=4s  publicado até o offset 4  | visitas atrás: 0  | bronze atrás: 4
+   t=5s  publicado até o offset 5  | visitas atrás: 1  | bronze atrás: 5
+   t=6s  publicado até o offset 6  | visitas atrás: 2  | bronze atrás: 1
+   t=7s  publicado até o offset 7  | visitas atrás: 3  | bronze atrás: 2
+   t=8s  publicado até o offset 8  | visitas atrás: 4  | bronze atrás: 3
+[ok] o atraso de um não segura o outro (bronze segue normal): True
+[ok] visitas depois da religação: mesmos totais: {'/carrinho': 2, '/home': 1, '/produto/camiseta': 1, '/produto/fone': 1, '/produto/mochila': 1, '/produto/relogio': 1, '/produto/tenis': 1}
+[ok] nenhum evento contado duas vezes (eventos contados): 8
+
+Cenário 3 · queda ENTRE processar e salvar o offset (entrega pelo menos uma vez)
+[ok] offset salvo na queda (processou 4, salvou 3): 3
+[ok] ao voltar, relê o 4º evento: processados antes e depois: (4, 5)
+[ok] mesmo assim, cada evento é contado uma vez só: 8
+[ok] totais por página iguais: {'/carrinho': 2, '/home': 1, '/produto/camiseta': 1, '/produto/fone': 1, '/produto/mochila': 1, '/produto/relogio': 1, '/produto/tenis': 1}
+
+Decisão: o offset é salvo DEPOIS de processar. A queda no meio repete um evento (nunca perde) e o
+processamento idempotente (INSERT OR IGNORE pela chave do evento) impede a contagem dupla.
+
+Cenário canônico (estado real do pipeline)
+[ok] visitas por página: {'/carrinho': 2, '/home': 1, '/produto/camiseta': 1, '/produto/fone': 1, '/produto/mochila': 1, '/produto/relogio': 1, '/produto/tenis': 1}
+[ok] bronze: 8 eventos, sem duplicata: (8, 8)
+[ok] leitor novo `por_cliente` (desde o offset 0): eventos por cliente (None = visitante): {None: 1, 1: 2, 2: 1, 3: 1, 5: 2, 6: 1}
+[ok] depois de todos lerem, o log continua com os eventos: 8
+[ok] offsets próprios de cada leitor: {'visitas': 8, 'bronze': 8, 'por_cliente': 8}
