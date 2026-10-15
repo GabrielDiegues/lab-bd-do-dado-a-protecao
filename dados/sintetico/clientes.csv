@@ -1,0 +1,7 @@
+id,nome,email,cpf,nascimento,cidade,atualizado_em
+1,Pessoa Sintética 001,pessoa001@sintetico.invalid,000.000.001-00,1978-06-17,Cidade C,2026-10-01T09:01:00
+2,Pessoa Sintética 002,pessoa002@sintetico.invalid,000.000.002-00,1995-02-08,Cidade C,2026-10-01T09:02:00
+3,Pessoa Sintética 003,pessoa003@sintetico.invalid,000.000.003-00,1994-09-14,Cidade C,2026-10-01T09:03:00
+4,Pessoa Sintética 004,pessoa004@sintetico.invalid,000.000.004-00,1992-12-25,Cidade B,2026-10-01T09:04:00
+5,Pessoa Sintética 005,pessoa005@sintetico.invalid,000.000.005-00,1999-10-15,Cidade A,2026-10-01T09:05:00
+6,Pessoa Sintética 006,pessoa006@sintetico.invalid,000.000.006-00,1975-10-03,Cidade A,2026-10-01T09:06:00

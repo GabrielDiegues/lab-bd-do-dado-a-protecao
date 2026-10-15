@@ -1,0 +1,20 @@
+Missão 6 · Segurança: matriz, pseudônimo, silver e trajeto do CPF
+=================================================================
+
+[ok] silver: e-mail, CPF, telefone ou IP em qualquer valor: []
+[ok] silver: colunas proibidas (nome, email, cpf, ip, observacao, cliente_id): []
+[ok] silver: e-mail, CPF, telefone ou IP nos bytes do arquivo (inclusive páginas livres): []
+[ok] duas execuções com a mesma chave: mesmos pseudônimos: True
+[ok] com outra chave: nenhum pseudônimo se repete: 0
+   pseudônimos (12 primeiros hex, sem o id): 230f71f92531, 43d0fef1b057, 4c83565b3c36, 81f262dbccea, b1de63f2bf33, fdb432304a10
+[ok] a junção pedidos × clientes funciona pelo mesmo pseudônimo: True
+[ok] analista lê a bronze?: False
+[ok] analista escreve na silver?: False
+[ok] pipeline lê a bronze: True
+[ok] trilha de leitura registra os três acessos, inclusive o negado: ['negado', 'leitura', 'escrita']
+[ok] EXTRA · pipeline do início ao fim com dados sintéticos (clientes, pedidos, eventos na silver): (6, 8, 8)
+[ok] EXTRA · nenhuma pessoa real nos dados sintéticos: 0
+[ok] EXTRA · a origem da loja não foi tocada: 6
+
+A chave (CHAVE_PSEUDONIMO) vem do ambiente; a busca pelo valor dela no repositório é feita no fim (ver abaixo).
+[ok] valor da CHAVE_PSEUDONIMO encontrado no repositório inteiro (código, evidências, estado/): nenhuma ocorrência
